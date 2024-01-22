@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+    <title>Login</title>
+</head>
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <!-- Tabs Titles -->
+            <h2 class="active"> Sign In </h2>
+            <h2><a class="active" href="{% url 'bank_app:index' %}"> Home </a></h2>
+
+            <!-- Login Form -->
+            <form action="login" method="post">
+                {% csrf_token %}
+                <input type="text" class="fadeIn first" name="username" placeholder="Username">
+                <input type="password" class="fadeIn second" name="password" placeholder="Password">
+                <input type="submit" class="fadeIn third" value="Log In">
+                <a class="fadeIn fourth" href="register">Don't have a account Register Here</a>
+            </form>
+            {% for msg in messages %}
+            {{msg}}
+            {% endfor %}
+            <br>
+        </div>
+    </div>
+
+</body>
+</html>
